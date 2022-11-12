@@ -1,0 +1,11 @@
+.mat-elevation-z8 {
+    overflow-x: auto;
+}
+
+
+@media(max-width: 767px) {
+    // GIVE MAT TABLE GREATER WIDTH TO MAKE IT SCROLLABLE IN MOBILE DEVICES 
+    .mat-table {
+        width: 200%;
+    }
+}

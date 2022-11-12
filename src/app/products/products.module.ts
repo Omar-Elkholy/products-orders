@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatTableModule} from '@angular/material/table'
+import {MatPaginatorModule} from '@angular/material/paginator'
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -15,7 +17,9 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    MatPaginatorModule,
+    MatTableModule
   ]
 })
 export class ProductsModule { }
