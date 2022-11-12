@@ -1,0 +1,33 @@
+<div class="container">
+    <h3 mat-dialog-title>{{'New Order'}}</h3>
+    <form [formGroup]="form">
+        <div mat-dialog-content>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-form-field class="w-100">
+                        <mat-select formControlName="paymentType" placeholder="Payment Method">
+                            <mat-option [value]="'Cash'">Cash</mat-option>
+                            <mat-option [value]="'Online'">Online</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field class="w-100">
+                        <mat-select formControlName="userId" placeholder="Customer">
+                            <mat-option *ngFor="let user of users" [value]="user.Id">
+                                {{ user.Name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </div>
+        <div mat-dialog-actions class="mb-1">
+            <button class="btn btn-danger" (click)="onNoClick()" tabindex="-1">Cancel</button>
+            <button [disabled]="!form.valid" type="submit" (click)="save()" class="btn btn-primary mx-2 shadow-none">
+                Save
+            </button>
+        </div>
+    </form>
+</div>

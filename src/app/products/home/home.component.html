@@ -16,12 +16,14 @@
                         <div class="part-1">
                             <div [ngStyle]="{'background-image': 'url(' + product?.ProductImg + ')'}" class="img"></div>
                             <span *ngIf="checkQuantity(product?.AvailablePieces)" class="low-quantity">FEW</span>
+                            <span *ngIf="product?.AvailablePieces === 0" class="low-quantity bg-danger">NOT AVAILABLE</span>
                             <ul>
-                                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li> -->
-                                <li><a href="#"><i class="fa-solid fa-plus"></i></a></li>
+                                <li><a (click)="addOrUpdateOrder(product)"><i class="fa-solid fa-plus"></i></a></li>
+                                <li *ngIf="addedQuantity[product.ProductId]"><a (click)="decreaseOrRemoveOrder(product)"><i class="fa-solid fa-minus"></i></a></li>
                             </ul>
                         </div>
-                        <div class="part-2 px-2 pb-2">
+                        <div class="part-2 px-2 pb-2 position-relative">
+                            <span *ngIf="addedQuantity[product.ProductId]" class="order-quantity">({{ addedQuantity[product.ProductId] }}) Ordered</span>
                             <h3 class="product-title mb-2">{{ product?.ProductName }}</h3>
                             <h4 class="product-price mb-1">{{ product?.ProductPrice | currency }}</h4>
                             <h5 class="product-count text-info">({{ product?.AvailablePieces }}) <span class="text-dark">available</span></h5>
@@ -32,3 +34,8 @@
         </div>
     </div>
 </section>
+
+<div (click)="openDialog()" [ngClass]="{'slideUp': addedProducts.length > 0, 'slideDown': (addedProducts.length === 0 && startShowOrderBtn)}" 
+    class="new-order-popup align-middle shadow-sm">
+    New Order
+</div>

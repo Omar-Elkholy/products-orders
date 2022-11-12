@@ -36,7 +36,7 @@ export class OrderDetailsComponent implements OnInit {
   getRoutedOrder() {
     this.coreService.getOrderById(this.orderId)
       .subscribe((res: any) => {
-        this.order = res;        
+        this.order = res;   
         this.getOrderUser();
         this.getOrderProducts();
       })
@@ -53,6 +53,7 @@ export class OrderDetailsComponent implements OnInit {
       product => {
         const productObj = this.productById[product.ProductId];
         productObj.quantity = product.Quantity;
+        productObj.ProductPrice = productObj.quantity * productObj.ProductPrice;
         this.totalPrice += productObj.ProductPrice;
         this.orderProducts.push(productObj);
       }
