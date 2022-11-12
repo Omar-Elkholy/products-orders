@@ -3,6 +3,7 @@ import { CoreService } from 'src/app/shared/services/core.service';
 import { Order } from 'src/app/shared/models/order.model';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -16,7 +17,8 @@ export class OrdersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private coreService: CoreService
+    private coreService: CoreService,
+    public loader: LoaderService
   ) { }
 
   ngOnInit(): void {

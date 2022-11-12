@@ -6,6 +6,7 @@ import { CoreService } from 'src/app/shared/services/core.service';
 import { MatDialog } from "@angular/material/dialog";
 import { ToastrService } from 'ngx-toastr';
 import { Order, OrderProduct } from 'src/app/shared/models/order.model';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private coreService: CoreService,
     private dialog: MatDialog,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public loader: LoaderService
   ) { }
 
   ngOnInit(): void {

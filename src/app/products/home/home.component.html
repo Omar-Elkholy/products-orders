@@ -9,9 +9,19 @@
             </div>
         </div>
         <div class="row">
+
+            <!-- LOADING SKELETON -->
+            <ng-container *ngIf="loader.isLoading | async">
+                <div *ngFor="let item of [1,2,3,4,5,6,7,8]" class="col-md-6 col-lg-4 col-xl-3 mb-4">
+                    <div id="product-1" class="loading-col shadow-sm">
+                        <div class="img animated-background"></div>
+                    </div>
+                </div>
+            </ng-container>
+
             <!-- Single Product -->
-            <ng-container *ngFor="let product of products$ | async">
-                <div class="col-md-6 col-lg-4 col-xl-3">
+            <ng-container>
+                <div *ngFor="let product of products$ | async" class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-1" class="single-product shadow-sm">
                         <div class="part-1">
                             <div [ngStyle]="{'background-image': 'url(' + product?.ProductImg + ')'}" class="img"></div>

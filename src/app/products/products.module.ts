@@ -9,7 +9,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatTableModule,
     RouterModule,
+    MatProgressSpinnerModule,
     SharedModule
   ]
 })
