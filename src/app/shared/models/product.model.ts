@@ -3,5 +3,6 @@ export interface Product {
     ProductName: string,
     ProductPrice: number,
     AvailablePieces: number,
-    ProductImg: string
+    ProductImg: string,
+    quantity?: number
 }
