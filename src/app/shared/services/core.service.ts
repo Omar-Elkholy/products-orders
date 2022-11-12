@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 /****
  * 
@@ -11,5 +13,13 @@ import { Injectable } from '@angular/core';
 })
 export class CoreService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  // GENERIC FUNCTION TO GET DATA INSIDE JSON FILES
+  getJSON<T>(url: string): Observable<T> {
+    return this.http.get<T>(url);
+  }
+  
 }
