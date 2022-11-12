@@ -1,1 +1,41 @@
-<p>orders works!</p>
+<div class="example-container mat-elevation-z8 shadow">
+    <mat-table #table [dataSource]="dataSource">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.OrderId}} </mat-cell>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.OrderDate ? (element.OrderDate | date) : 'Invalid Date'}} </mat-cell>
+        </ng-container>
+
+        <!-- Customer No Column -->
+        <ng-container matColumnDef="customer">
+            <mat-header-cell *matHeaderCellDef> Customer No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.UserId}} </mat-cell>
+        </ng-container>
+
+        <!-- Payment Type Column -->
+        <ng-container matColumnDef="payment">
+            <mat-header-cell *matHeaderCellDef> Payment Type </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.PaymentType}} </mat-cell>
+        </ng-container>
+
+        <!-- Details Column -->
+        <ng-container matColumnDef="details">
+            <mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button [routerLink]="['/products/orders', element.OrderId]" class="btn btn-outline-primary">Details</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [showFirstLastButtons]="true" [pageSize]="7" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+</div>
