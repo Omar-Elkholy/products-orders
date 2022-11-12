@@ -15,9 +15,14 @@ import { Order } from '../models/order.model';
 })
 export class CoreService {
 
+  // ORDERS ADDED MANUALLY FROM USER
+  addedOrders: Order[] = [];
+
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.getUserAddedOrders();
+  }
 
   // GENERIC FUNCTION TO GET DATA INSIDE JSON FILES
   getJSON<T>(url: string): Observable<T> {
@@ -29,9 +34,18 @@ export class CoreService {
       .pipe(
         map(orders => {
           // RETURN THE ORDER FOUND -> IF NOT RETURN AN EMPTY OBJECT
+          orders = [...this.addedOrders, ...orders]
           return orders.find(item => item.OrderId === +id) || {};
         })
       )
   }
-  
+
+  // GET ORDERS ADDED MANUALLY FROM USER
+  getUserAddedOrders() {
+    const addedOrders = localStorage.getItem('addedOrders')
+    if (addedOrders) {
+      this.addedOrders = JSON.parse(addedOrders);
+    }
+  }
+
 }

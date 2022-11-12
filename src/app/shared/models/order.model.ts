@@ -6,7 +6,7 @@ export interface Order {
     PaymentType: string
 }
 
-interface OrderProduct {
+export interface OrderProduct {
     ProductId: number,
     Quantity: number
 }

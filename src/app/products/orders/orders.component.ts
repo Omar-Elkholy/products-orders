@@ -20,7 +20,7 @@ export class OrdersComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.getOrders();
+    this.getOrders();    
   }
 
   ngAfterViewInit(): void {
@@ -30,6 +30,7 @@ export class OrdersComponent implements OnInit, AfterViewInit {
   getOrders() {
     this.coreService.getJSON<Order[]>('/assets/data/orders.json')
       .subscribe(res => {
+        res = [...this.coreService.addedOrders, ...res];
         this.handleDateFormat(res);
         this.dataSource.data = res;
       })

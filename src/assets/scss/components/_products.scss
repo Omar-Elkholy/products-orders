@@ -107,6 +107,57 @@
             display: inline-block;
             font-size: 1rem;
         }
+
+        .order-quantity {
+            display: inline-block;
+            background-color: green;
+            padding: .3rem .5rem;
+            color: #fff;
+            font-size: 12px;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
     }
 
+}
+
+.new-order-popup {
+    position: fixed;
+    cursor: pointer;
+    left: 1.5rem;
+    bottom: -50px;
+    width: 120px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #25896c;
+    color: #fff;
+    transition: all .5s ease;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px !important;
+    }
+}
+
+.new-order-popup.slideUp {
+    animation: slideUp .5s ease forwards;
+}
+
+.new-order-popup.slideDown {
+    bottom: 1.5rem;
+    animation: slideDown .5s ease forwards;
+}
+
+@keyframes slideUp {
+    100% {
+        opacity: 1;
+        bottom: 1.5rem;
+    }
+}
+
+@keyframes slideDown {
+    100% {
+        bottom: -50px;
+    }
 }
