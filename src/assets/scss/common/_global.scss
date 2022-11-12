@@ -1,0 +1,27 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    font-family: "Font Awesome 5 Free"; 
+}
+
+.align-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
