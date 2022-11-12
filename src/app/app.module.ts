@@ -9,6 +9,8 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { HeaderComponent } from './layout/header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MyInterceptor } from './shared/interceptor/interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,13 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
